@@ -1,21 +1,21 @@
 import React from "react";
 import NavItem from "./NavItem";
 
-function NavItem({ menu }) {
+function Navbar() {
   return (
     <nav>
       <nav className="flex justify-betweeen px-5 py-20 shadow-md">
         <h3 className="font-bold">Pizza Joint</h3>
         <ul className="flex gap-5">
-          <NavItem manu="Home" />
-          <NavItem manu="Products" />
-          <NavItem manu="Services" />
-          <NavItem manu="About" />
-          <NavItem manu="Contact" />
+          <NavItem menu="Home" />
+          <NavItem menu="Products" />
+          <NavItem menu="Services" />
+          <NavItem menu="About" />
+          <NavItem menu="Contact" />
         </ul>
       </nav>
     </nav>
   );
 }
 
-export default NavItem;
+export default Navbar;
