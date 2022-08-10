@@ -1,9 +1,9 @@
-export const Button1 = () => {
-  return <button>Add to Cart</button>;
-};
-export const Button2 = () => {
-  return <button>Register</button>;
-};
-export const Button3 = () => {
-  return <button>Login</button>;
-};
+function Button({ label }) {
+  return (
+    <Button className="border-2 border-orange-500  px-2 py-5 rounded-full hover:text-violet-500">
+      {label}
+    </Button>
+  );
+}
+
+export default Button;
