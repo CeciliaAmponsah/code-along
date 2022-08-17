@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import {v4 as uuid} from "uuid";
+
 import TaskItem from "./TaskItem";
 // import background from "../assets/img/flower.jpg";
 
 function TaskManager() {
-  const [tasks, setTasks] = useState(["Learn HTML", "Learn CSS"]);
+  const [tasks, setTasks] = useState(()=>{
+    const tasks = localStorage.getItem("tasks");
+    if (!tasks) return[];
+    return JSON.parse(tasks);
+  });
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input === "") return;
-    setTasks([input, ...tasks]);
+
+    const newTask ={
+      id: uuid(),
+      text: input,
+      completed: true,
+    }
+    setTasks([newTask, ...tasks]);
     setInput("");
   };
 
-  const handleDelete = (idx) => {
-    const newTask = tasks.filter((task) => task !== idx);
+  const handleDelete = (id) => {
+    const newTask = tasks.filter((task) => task.id !== id);
     setTasks(newTask);
   };
+  useEffect(()=>{
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+  },[tasks])
 
   return (
     <div className="h-screen bg-blue-600 flex justify-center items-center">
@@ -41,8 +57,8 @@ function TaskManager() {
         </form>
 
         <div className="space-y-2 overflow-y-auto h-56">
-          {tasks.map((tasks) => (
-            <TaskItem task={tasks} handleDelete={handleDelete} />
+          {tasks.map((task) => (
+            <TaskItem key={task.id} task={task} handleDelete={handleDelete} />
           ))}
         </div>
       </div>
