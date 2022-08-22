@@ -8,6 +8,7 @@ function useAxios(url) {
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       try {
         const result = await axios.get(url);
         setData(result.data);
