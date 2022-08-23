@@ -1,20 +1,40 @@
 import React from "react";
 import NavItem from "./NavItem";
 
+const links = [
+  {
+    label: "Home",
+    to: "/home",
+  },
+  {
+    label: "About",
+    to: "/about",
+  },
+  {
+    label: "Contact",
+    to: "/contact",
+  },
+  {
+    label: "Products",
+    to: "/products",
+  },
+  {
+    label: "Task Manager",
+    to: "/task-manager",
+  },
+
+]
+
 function Navbar() {
   return (
-    <nav>
-      <nav className="flex justify-betweeen px-5 py-20 shadow-md">
+      <nav className="flex justify-between px-20 py-5 shadow-md">
         <h3 className="font-bold">Pizza Joint</h3>
         <ul className="flex gap-5">
-          <NavItem menu="Home" />
-          <NavItem menu="Products" />
-          <NavItem menu="Services" />
-          <NavItem menu="About" />
-          <NavItem menu="Contact" />
+          {links.map((link, index) => (
+            <NavItem key={index} label={link.label} to={link.to} />
+          ))}
         </ul>
       </nav>
-    </nav>
   );
 }
 
