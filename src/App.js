@@ -4,13 +4,14 @@
  //import Navbar from "./components/NavItem";
 // import Practice from "./components/Practice";
 // import Form from "./components/Form";
-import ProductList from "./components/ProductList";
-import TaskManager from "./components/TaskManager";
+import ProductList from "./pages/ProductList";
+import TaskManager from "./pages/TaskManager";
 import Spinner from "./components/Spinner";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductList />} />
+          <Route path="/products/:productId" element={<ProductDetail />} />
           <Route path="/task-manager" task-manager element={<TaskManager />} />
           <Route path="/about" about element={<About />} />
           <Route path="/contact" contact element={<Contact />} />

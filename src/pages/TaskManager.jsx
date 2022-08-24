@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import {v4 as uuid} from "uuid";
 
-import TaskItem from "./TaskItem";
+import TaskItem from "../components/TaskItem";
 // import background from "../assets/img/flower.jpg";
 
 function TaskManager() {
